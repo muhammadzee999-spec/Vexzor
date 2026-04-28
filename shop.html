@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEXZOR - Premium Collections</title>
+    <link rel="stylesheet" href="css/shop.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="promo-banner">🔥 LIMITED STOCK AVAILABLE - UP TO 30% OFF THIS WEEKEND 🔥</div>
+
+    <!-- Premium Navigation (Synced with Index) -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand-logo">VEXZOR</a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="shop.html" class="active">Shop</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <a href="login.html" class="auth-link"><i class="fa fa-user"></i> <span class="hide-mobile">LOGIN</span></a>
+            <a href="cart.html" class="cart-icon-wrapper">
+                <i class="fa fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <div class="menu-btn" id="menu-btn">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Collections Header (Split Layout Redesign) -->
+    <header class="collections-hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <span class="hero-tag">SS/26 COLLECTION</span>
+                <h1>CURATED<br><em>EXCELLENCE</em></h1>
+                <p>Elegance redefined for the modern connoisseur. Discover our latest drop featuring premium materials
+                    and bespoke tailoring.</p>
+                <div class="hero-cta">
+                    <a href="#shop-layout" class="shop-hero-btn">Explore Drop <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <div class="hero-img-wrapper" id="hero-img-trigger">
+                    <img src="images/shop_hero.png" alt="Luxury Collection Hero" id="hero-img"
+                        class="floating-hero-img" loading="lazy">
+                    <div class="offer-badge">30% OFF</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shop Layout -->
+    <section class="shop-section" id="shop-layout">
+        <div class="shop-container">
+            <!-- Sidebar Filters -->
+            <aside class="sidebar">
+                <div class="sidebar-block">
+                    <h3>CATEGORIES</h3>
+                    <div class="sidebar-options">
+                        <label class="filter-item">
+                            <input type="checkbox" value="all" checked onchange="applyFilters()">
+                            All Collections
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="Shirts" onchange="applyFilters()">
+                            Luxury Shirts
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="Pants" onchange="applyFilters()">
+                            Bespoke Pants
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="Shoes" onchange="applyFilters()">
+                            Signature Shoes
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="Caps" onchange="applyFilters()">
+                            Urban Caps
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="Hoodies" onchange="applyFilters()">
+                            Premium Hoodies
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="Glasses" onchange="applyFilters()">
+                            Designer Glasses
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="Coats" onchange="applyFilters()">
+                            Masterpiece Coats
+                        </label>
+                    </div>
+                </div>
+
+                <div class="sidebar-block">
+                    <h3>PRICE RANGE</h3>
+                    <div class="price-slider-wrap">
+                        <input type="range" id="price-range" min="0" max="500" value="500" step="10"
+                            oninput="updatePriceLabel(this.value); applyFilters()">
+                        <div class="price-labels">
+                            <span class="price-min">Min: $0</span>
+                            <span class="price-max">Max: <span id="price-label" class="current-price">$500</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="reset-filter-btn" onclick="resetFilters()">Clear Filters</button>
+
+                <!-- Promo Banner 1: New Arrivals -->
+                <div class="sidebar-promo sidebar-promo-dark">
+                    <span class="sidebar-promo-tag">NEW DROP</span>
+                    <h3>SS/26<br>COLLECTION</h3>
+                    <p>Explore the latest premium arrivals crafted for excellence.</p>
+                    <a href="#product-grid-shop" class="sidebar-promo-btn">Shop Now <i class="fa fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Promo Banner 2: Discount -->
+                <div class="sidebar-promo sidebar-promo-accent">
+                    <div class="sidebar-promo-discount">30%</div>
+                    <h4>MEMBERS GET<br>EXCLUSIVE DEALS</h4>
+                    <p>Sign up today & unlock premium pricing on all collections.</p>
+                    <a href="signup.html" class="sidebar-promo-btn-outline">Join Free <i class="fa fa-user-plus"></i></a>
+                </div>
+
+                <!-- Trending Tags -->
+                <div class="sidebar-block sidebar-tags-block">
+                    <h3>TRENDING</h3>
+                    <div class="sidebar-tags">
+                        <span class="sidebar-tag" onclick="document.querySelector('input[value=Shirts]').checked=true; document.querySelector('input[value=all]').checked=false; applyFilters();">Shirts</span>
+                        <span class="sidebar-tag" onclick="document.querySelector('input[value=Shoes]').checked=true; document.querySelector('input[value=all]').checked=false; applyFilters();">Sneakers</span>
+                        <span class="sidebar-tag" onclick="document.querySelector('input[value=Hoodies]').checked=true; document.querySelector('input[value=all]').checked=false; applyFilters();">Hoodies</span>
+                        <span class="sidebar-tag" onclick="document.querySelector('input[value=Coats]').checked=true; document.querySelector('input[value=all]').checked=false; applyFilters();">Coats</span>
+                        <span class="sidebar-tag" onclick="document.querySelector('input[value=Caps]').checked=true; document.querySelector('input[value=all]').checked=false; applyFilters();">Caps</span>
+                        <span class="sidebar-tag" onclick="document.querySelector('input[value=Glasses]').checked=true; document.querySelector('input[value=all]').checked=false; applyFilters();">Eyewear</span>
+                    </div>
+                </div>
+
+                <!-- Need Help Box -->
+                <div class="sidebar-help-box">
+                    <i class="fa fa-headset"></i>
+                    <h4>Need Help?</h4>
+                    <p>Our style experts are available 24/7</p>
+                    <a href="index.html#contact">Contact Us</a>
+                </div>
+            </aside> 
+
+            <!-- Main Product Grid Section -->
+            <main class="main-shop">
+                <div class="shop-controls">
+                    <p class="results-count" id="results-count">Showing 42 products</p>
+                    <div class="control-actions">
+                        <select id="sort-select" onchange="applyFilters()">
+                            <option value="default">Sort: Recommended</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="name-asc">Name: A-Z</option>
+                        </select>
+                        <div class="view-toggles">
+                            <button class="view-btn active" id="grid-view-btn" onclick="setView('grid')"><i
+                                    class="fa fa-th"></i></button>
+                            <button class="view-btn" id="list-view-btn" onclick="setView('list')"><i
+                                    class="fa fa-list"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-grid-shop" id="product-grid-shop">
+                    <!-- SHIRTS (6) - CARD 1 UPDATED WITH 4 SHIRT THUMBS -->
+                    <div class="shop-product-card" data-id="1" data-category="Shirts" data-price="299.99"
+                        data-subcategory="Premium"
+                        data-images="images/pre-shirt1.jpeg,images/pre-shirt2.jpeg,images/pre-shirt3.jpeg,images/pre-shirt4.jpeg"
+                        onclick="openModal(this, 1)">
+                        <div class="spc-image">
+                            <img src="images/pre-shirt1.jpeg" alt="Green Premium Shirt" loading="lazy">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div>
+                            <span class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info">
+                            <span class="spc-category">Shirts</span>
+                            <h3 class="spc-name">Premium Shirt - 01</h3>
+                            <div class="spc-bottom"><span class="spc-price">$299.99</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(1)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="2" data-category="Shirts" data-price="189.99"
+                        data-subcategory="Classical"
+                        data-images="images/shirt-5.jpeg,images/shirt-6.jpeg,images/shirt-7.jpeg,images/shirt-8.jpeg"
+                        onclick="openModal(this, 2)">
+                        <div class="spc-image"><img src="images/shirt-5.jpeg" alt="Shirt 2">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shirts</span>
+                            <h3 class="spc-name">Classical Shirt - 02</h3>
+                            <div class="spc-bottom"><span class="spc-price">$189.99</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(2)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="3" data-category="Shirts" data-price="45.99"
+                        data-subcategory="Standard"
+                        data-images="images/classical-shirt-1 (1).jpeg,images/classical-shirt-1 (2).jpeg,images/classical-shirt-1 (3).jpeg,images/classical-shirt-1 (4).jpeg"
+                        onclick="openModal(this, 3)">
+                        <div class="spc-image"><img src="images/classical-shirt-1 (1).jpeg" alt="Shirt 3">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shirts</span>
+                            <h3 class="spc-name">Classical Shirt</h3>
+                            <div class="spc-bottom"><span class="spc-price">$45.99</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(3)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="4" data-category="Shirts" data-price="299.99"
+                        data-subcategory="Premium"
+                        data-images="images/half-silwes-shirt1 (4).jpeg,images/half-silwes-shirt1 (1).jpeg,images/half-silwes-shirt1 (3).jpeg,images/half-silwes-shirt1 (2).jpeg"
+                        onclick="openModal(this, 4)">
+                        <div class="spc-image"><img src="images/half-silwes-shirt1 (4).jpeg" alt="Shirt 4">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shirts</span>
+                            <h3 class="spc-name">Premium Shirt - 04</h3>
+                            <div class="spc-bottom"><span class="spc-price">$299.99</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(4)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="5" data-category="Shirts" data-price="130.00"
+                        data-subcategory="Classical"
+                        data-images="images/jonyy-collers-1 (1).jfif,images/jonyy-collers-1 (2).jfif,images/jonyy-collers-1 (3).jfif,images/jonyy-collers-1 (4).jfif"
+                        onclick="openModal(this, 5)">
+                        <div class="spc-image"><img src="images/jonyy-collers-1 (1).jfif" alt="Shirt 5">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shirts</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(5)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="6" data-category="Shirts" data-price="130.00"
+                        data-subcategory="Standard"
+                        data-images="images/old-money-1 (1).jfif,images/old-money-1 (2).jfif,images/old-money-1 (3).jfif,images/old-money-1 (4).jfif"
+                        onclick="openModal(this, 6)">
+                        <div class="spc-image"><img src="images/old-money-1 (1).jfif" alt="Shirt 6">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shirts</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(6)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+
+                    <!-- PANTS (6) -->
+                    <div class="shop-product-card" data-id="19" data-category="Pants" data-price="70.00"
+                        data-subcategory="Premium"
+                        data-images="images/brown-4 (4).jpg,images/brown-4 (2).jpg,images/brown-4 (3).jpg,images/brown-4 (1).jpg"
+                        onclick="openModal(this, 19)">
+                        <div class="spc-image"><img src="images/brown-4 (4).jpg" alt="Pants 1">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Pants</span>
+                            <h3 class="spc-name">Brown Cargo Pants</h3>
+                            <div class="spc-bottom"><span class="spc-price">$70.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(19)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="20" data-category="Pants" data-price="80.00"
+                        data-subcategory="Classical"
+                        data-images="images/formal-pant-1 (1).jpeg,images/formal-pant-1 (2).jpeg,images/formal-pant-1 (3).png,images/formal-pant-1 (3).png"
+                        onclick="openModal(this, 20)">
+                        <div class="spc-image"><img src="images/formal-pant-1 (1).jpeg" alt="Pants 2">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Pants</span>
+                            <h3 class="spc-name">Formal Pant</h3>
+                            <div class="spc-bottom"><span class="spc-price">$80.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(20)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="21" data-category="Pants" data-price="60.00"
+                        data-subcategory="Standard"
+                        data-images="images/baggy-1 (2).jpg,images/baggy-1 (1).jpg,images/baggy-1 (3).jpg,images/baggy-1 (4).jpg"
+                        onclick="openModal(this, 21)">
+                        <div class="spc-image"><img src="images/baggy-1 (2).jpg" alt="Pants 3">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Pants</span>
+                            <h3 class="spc-name">Baggy Jeans</h3>
+                            <div class="spc-bottom"><span class="spc-price">$60.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(21)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="22" data-category="Pants" data-price="50.00"
+                        data-subcategory="Premium"
+                        data-images="images/olive-1 (4).jpg,images/olive-1 (2).jpg,images/olive-1 (1).jpg,images/olive-1 (3).jpg"
+                        onclick="openModal(this, 22)">
+                        <div class="spc-image"><img src="images/olive-1 (4).jpg" alt="Pants 4">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Pants</span>
+                            <h3 class="spc-name">Olive Chinos</h3>
+                            <div class="spc-bottom"><span class="spc-price">$50.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(22)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="23" data-category="Pants" data-price="40.00"
+                        data-subcategory="Classical"
+                        data-images="images/pant-3 (3).jpg,images/pant-3 (4).jpg,images/pant-3 (2).jpg,images/pant-3 (1).jpg"
+                        onclick="openModal(this, 23)">
+                        <div class="spc-image"><img src="images/pant-3 (3).jpg" alt="Pants 5">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Pants</span>
+                            <h3 class="spc-name">Classic Denim</h3>
+                            <div class="spc-bottom"><span class="spc-price">$40.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(23)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="24" data-category="Pants" data-price="35.00"
+                        data-subcategory="Standard"
+                        data-images="images/standar-1 (3).jpg,images/standar-1 (1).jpg,images/standar-1 (2).jpg,images/standar-1 (4).jpg"
+                        onclick="openModal(this, 24)">
+                        <div class="spc-image"><img src="images/standar-1 (3).jpg" alt="Pants 6">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Pants</span>
+                            <h3 class="spc-name">Standard Trousers</h3>
+                            <div class="spc-bottom"><span class="spc-price">$35.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(24)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+
+                    <div class="shop-product-card" data-id="37" data-category="Shoes" data-price="120.00"
+                        data-subcategory="Premium"
+                        data-images="images/shoes-1 (1).jpeg,images/shoes-1 (2).jpeg,images/shoes-1 (3).jpeg,images/shoes-1 (4).jpeg"
+                        onclick="openModal(this, 37)">
+                        <div class="spc-image"><img src="images/shoes-1 (1).jpeg" alt="Shoes 1">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shoes</span>
+                            <h3 class="spc-name">Classic Shoes</h3>
+                            <div class="spc-bottom"><span class="spc-price">$120.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(37)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="38" data-category="Shoes" data-price="150.00"
+                        data-subcategory="Classical"
+                        data-images="images/formal-shoes-1 (1).jpeg,images/formal-shoes-1 (2).jpeg,images/formal-shoes-1 (3).jpeg,images/formal-shoes-1 (4).jpeg",
+                        onclick="openModal(this, 38)">
+                        <div class="spc-image"><img src="images/formal-shoes-1 (1).jpeg" alt="Shoes 2">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shoes</span>
+                            <h3 class="spc-name">Formal Oxford Shoes</h3>
+                            <div class="spc-bottom"><span class="spc-price">$150.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(38)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="39" data-category="Shoes" data-price="90.00"
+                        data-subcategory="Standard"
+                        data-images="images/black-sneaker-1 (1).jpeg,images/black-sneaker-1 (2).jpeg,images/black-sneaker-1 (3).jpeg,images/black-sneaker-1 (4).jpeg",
+                        onclick="openModal(this, 39)">
+                        <div class="spc-image"><img src="images/black-sneaker-1 (1).jpeg" alt="Shoes 3">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shoes</span>
+                            <h3 class="spc-name">Black Sneakers</h3>
+                            <div class="spc-bottom"><span class="spc-price">$90.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(39)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="40" data-category="Shoes" data-price="95.00"
+                        data-subcategory="Premium"
+                        data-images="images/white-snker-1 (1).jpeg,images/white-snker-1 (2).jpeg,images/white-snker-1 (3).jpeg,images/white-snker-1 (4).jpeg"
+                        onclick="openModal(this, 40)">
+                        <div class="spc-image"><img src="images/white-snker-1 (1).jpeg" alt="Shoes 4">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shoes</span>
+                            <h3 class="spc-name">White Sneakers</h3>
+                            <div class="spc-bottom"><span class="spc-price">$95.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(40)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="41" data-category="Shoes" data-price="250.00"
+                        data-subcategory="Classical"
+                        data-images="images/jordan-1 (1).jpeg,images/jordan-1 (2).jpeg,images/jordan-1 (3).jpeg,images/jordan-1 (4).jpeg"
+                        onclick="openModal(this, 41)">
+                        <div class="spc-image"><img src="images/jordan-1 (1).jpeg" alt="Shoes 5">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shoes</span>
+                            <h3 class="spc-name">Jordan 1 High</h3>
+                            <div class="spc-bottom"><span class="spc-price">$250.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(41)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="42" data-category="Shoes" data-price="85.00"
+                        data-subcategory="Standard"
+                        data-images="images/blue-1 (1).png,images/blue-1 (2).png,images/blue-1 (3).png,images/blue-1 (4).png"
+                        onclick="openModal(this, 42)">
+                        <div class="spc-image"><img src="images/blue-1 (1).png" alt="Shoes 6">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Shoes</span>
+                            <h3 class="spc-name">Blue Runners</h3>
+                            <div class="spc-bottom"><span class="spc-price">$85.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(42)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+
+                    <!-- CAPS (6) -->
+                    <div class="shop-product-card" data-id="55" data-category="Caps" data-price="20.00"
+                        data-subcategory="Premium"
+                        data-images="images/green-cap-1 (4).png,images/green-cap-1 (1).png,images/green-cap-1 (2).png,images/green-cap-1 (3).png"
+                        onclick="openModal(this, 55)">
+                        <div class="spc-image"><img src="images/green-cap-1 (4).png" alt="Caps 1">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Caps</span>
+                            <h3 class="spc-name">Green Cap</h3>
+                            <div class="spc-bottom"><span class="spc-price">$20.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(55)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="56" data-category="Caps" data-price="30.00"
+                        data-subcategory="Classical"
+                        data-images="images/cap-nike-1 (3).png,images/cap-nike-1 (4).png,images/cap-nike-1 (1).png,images/cap-nike-1 (2).png"
+                        onclick="openModal(this, 56)">
+                        <div class="spc-image"><img src="images/cap-nike-1 (3).png" alt="Caps 2">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Caps</span>
+                            <h3 class="spc-name">Nike Cap</h3>
+                            <div class="spc-bottom"><span class="spc-price">$30.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(56)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="57" data-category="Caps" data-price="25.00"
+                        data-subcategory="Standard"
+                        data-images="images/black-cap-1 (1).png,images/black-cap-1 (2).png,images/black-cap-1 (3).png,images/black-cap-1 (4).png"
+                        onclick="openModal(this, 57)">
+                        <div class="spc-image"><img src="images/black-cap-1 (1).png" alt="Caps 3">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Caps</span>
+                            <h3 class="spc-name">Black Cap</h3>
+                            <div class="spc-bottom"><span class="spc-price">$25.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(57)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="58" data-category="Caps" data-price="40.00"
+                        data-subcategory="Premium"
+                        data-images="images/premium-cap-1 (4).png,images/premium-cap-1 (2).png,images/premium-cap-1 (1).png,images/premium-cap-1 (3).png"
+                        onclick="openModal(this, 58)">
+                        <div class="spc-image"><img src="images/premium-cap-1 (4).png" alt="Caps 4">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Caps</span>
+                            <h3 class="spc-name">Premium Cap</h3>
+                            <div class="spc-bottom"><span class="spc-price">$40.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(58)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="59" data-category="Caps" data-price="130.00"
+                        data-subcategory="Classical"
+                        data-images="images/jordan-cap-1 (3).jfif,images/jordan-cap-1 (2).jfif,images/jordan-cap-1 (1).jfif,images/jordan-cap-1 (4).jfif"
+                        onclick="openModal(this, 59)">
+                        <div class="spc-image"><img src="images/jordan-cap-1 (3).jfif" alt="Caps 5">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Caps</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(59)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="60" data-category="Caps" data-price="130.00"
+                        data-subcategory="Standard"
+                        data-images="images/capsti-1 (1).jfif,images/capsti-1 (2).jfif,images/capsti-1 (3).jfif,images/capsti-1 (4).jfif"
+                        onclick="openModal(this, 60)">
+                        <div class="spc-image"><img src="images/capsti-1 (1).jfif" alt="Caps 6">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Caps</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(60)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+
+                    <!-- HOODIES (6) -->
+                    <div class="shop-product-card" data-id="73" data-category="Hoodies" data-price="130.00"
+                        data-subcategory="Premium"
+                        data-images="images/designing-1 (1).jfif,images/designing-1 (2).jfif,images/designing-1 (3).jfif,images/designing-1 (4).jfif"
+                        onclick="openModal(this, 73)">
+                        <div class="spc-image"><img src="images/designing-1 (1).jfif" alt="Hoodies 1">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Hoodies</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(73)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="74" data-category="Hoodies" data-price="130.00"
+                        data-subcategory="Classical"
+                        data-images="images/premium-hoddy-1 (2).jfif,images/premium-hoddy-1 (3).jfif,images/premium-hoddy-1 (1).jfif,images/premium-hoddy-1 (4).jfif"
+                        onclick="openModal(this, 74)">
+                        <div class="spc-image"><img src="images/premium-hoddy-1 (2).jfif" alt="Hoodies 2">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Hoodies</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(74)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="75" data-category="Hoodies" data-price="130.00"
+                        data-subcategory="Standard"
+                        data-images="images/hoddeis-1 (1).jfif,images/hoddeis-1 (2).jfif,images/hoddeis-1 (3).jfif,images/hoddeis-1 (4).jfif"
+                        onclick="openModal(this, 75)">
+                        <div class="spc-image"><img src="images/hoddeis-1 (1).jfif" alt="Hoodies 3">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Hoodies</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(75)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="76" data-category="Hoodies" data-price="130.00"
+                        data-subcategory="Premium"
+                        data-images="images/printend-hoddy-1 (1).jfif,images/printend-hoddy-1 (2).jfif,images/printend-hoddy-1 (3).jfif,images/printend-hoddy-1 (4).jfif"
+                        onclick="openModal(this, 76)">
+                        <div class="spc-image"><img src="images/printend-hoddy-1 (1).jfif" alt="Hoodies 4">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Hoodies</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(76)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="77" data-category="Hoodies" data-price="130.00"
+                        data-subcategory="Classical"
+                        data-images="images/classic-1 (1).jfif,images/classic-1 (2).jfif,images/classic-1 (3).jfif,images/classic-1 (4).jfif"
+                        onclick="openModal(this, 77)">
+                        <div class="spc-image"><img src="images/classic-1 (1).jfif" alt="Hoodies 5">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Hoodies</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(77)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="78" data-category="Hoodies" data-price="130.00"
+                        data-subcategory="Standard"
+                        data-images="images/plane-1 (1).jfif,images/plane-1 (2).jfif,images/plane-1 (3).jfif,images/plane-1 (4).jfif"
+                        onclick="openModal(this, 78)">
+                        <div class="spc-image"><img src="images/plane-1 (1).jfif" alt="Hoodies 6">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Hoodies</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(78)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+
+                    <!-- GLASSES (6) -->
+                    <div class="shop-product-card" data-id="91" data-category="Glasses" data-price="130.00"
+                        data-subcategory="Premium"
+                        data-images="images/style-glass-1 (1).jfif,images/style-glass-1 (2).jfif,images/style-glass-1 (3).jfif,images/style-glass-1 (4).jfif"
+                        onclick="openModal(this, 91)">
+                        <div class="spc-image"><img src="images/style-glass-1 (1).jfif" alt="Glasses 1">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Glasses</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(91)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="92" data-category="Glasses" data-price="130.00"
+                        data-subcategory="Classical"
+                        data-images="images/styleish-1 (1).jfif,images/styleish-1 (2).jfif,images/styleish-1 (3).jfif,images/styleish-1 (4).jfif"
+                        onclick="openModal(this, 92)">
+                        <div class="spc-image"><img src="images/styleish-1 (1).jfif" alt="Glasses 2">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Glasses</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(92)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="93" data-category="Glasses" data-price="130.00"
+                        data-subcategory="Standard"
+                        data-images="images/pre-1 (3).jfif,images/pre-1 (2).jfif,images/pre-1 (1).jfif,images/pre-1 (4).jfif"
+                        onclick="openModal(this, 93)">
+                        <div class="spc-image"><img src="images/pre-1 (3).jfif" alt="Glasses 3">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Glasses</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(93)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="94" data-category="Glasses" data-price="130.00"
+                        data-subcategory="Premium"
+                        data-images="images/white-glasess-1 (4).jfif,images/white-glasess-1 (2).jfif,images/white-glasess-1 (3).jfif,images/white-glasess-1 (1).jfif"
+                        onclick="openModal(this, 94)">
+                        <div class="spc-image"><img src="images/white-glasess-1 (4).jfif" alt="Glasses 4">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Glasses</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(94)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="95" data-category="Glasses" data-price="130.00"
+                        data-subcategory="Classical"
+                        data-images="images/sunglasess-1 (2).jfif,images/sunglasess-1 (1).jfif,images/sunglasess-1 (3).jfif,images/sunglasess-1 (4).jfif"
+                        onclick="openModal(this, 95)">
+                        <div class="spc-image"><img src="images/sunglasess-1 (2).jfif" alt="Glasses 5">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Glasses</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(95)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="96" data-category="Glasses" data-price="90.00"
+                        data-subcategory="Standard"
+                        data-images="images/optical-1 (4).png,images/optical-1 (3).png,images/optical-1 (2).png,images/optical-1 (1).png"
+                        onclick="openModal(this, 96)">
+                        <div class="spc-image"><img src="images/optical-1 (4).png" alt="Glasses 6">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Glasses</span>
+                            <h3 class="spc-name">Optical Frames</h3>
+                            <div class="spc-bottom"><span class="spc-price">$90.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(96)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+
+                    <!-- Coats (6) -->
+                    <div class="shop-product-card" data-id="109" data-category="Coats" data-price="180.00"
+                        data-subcategory="Premium"
+                        data-images="images/black-coat (1).jfif,images/black-coat (2).jfif,images/black-coat (3).jfif,images/black-coat (4).jfif"
+                        onclick="openModal(this, 109)">
+                        <div class="spc-image"><img src="images/black-coat (2).jfif" alt="Coats 1">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Coats</span>
+                            <h3 class="spc-name">Black Overcoat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$180.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(109)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="110" data-category="Coats" data-price="130.00"
+                        data-subcategory="Classical"
+                        data-images="images/pre-coat-1 (1).jfif,images/pre-coat-1 (2).jfif,images/pre-coat-1 (3).jfif,images/pre-coat-1 (4).jfif"
+                        onclick="openModal(this, 110)">
+                        <div class="spc-image"><img src="images/pre-coat-1 (1).jfif" alt="Coats 2">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Coats</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(110)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="111" data-category="Coats" data-price="130.00"
+                        data-subcategory="Standard"
+                        data-images="images/coat-1 (1).jfif,images/coat-1 (2).jfif,images/coat-1 (3).jfif,images/coat-1 (4).jfif"
+                        onclick="openModal(this, 111)">
+                        <div class="spc-image"><img src="images/coat-1 (1).jfif" alt="Coats 3">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Coats</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(111)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="112" data-category="Coats" data-price="190.00"
+                        data-subcategory="Premium"
+                        data-images="images/chinees-coat (1).jfif,images/chinees-coat (2).jfif,images/chinees-coat (3).jfif,images/chinees-coat (4).jfif"
+                        onclick="openModal(this, 112)">
+                        <div class="spc-image"><img src="images/chinees-coat (1).jfif" alt="Coats 4">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Premium</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Coats</span>
+                            <h3 class="spc-name">Mandarin Collar Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$190.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(112)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="113" data-category="Coats" data-price="160.00"
+                        data-subcategory="Classical"
+                        data-images="images/suit-coat (1).jfif,images/suit-coat (2).jfif,images/suit-coat (3).jfif,images/suit-coat (4).jfif"
+                        onclick="openModal(this, 113)">
+                        <div class="spc-image"><img src="images/suit-coat (1).jfif" alt="Coats 5">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Classical</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Coats</span>
+                            <h3 class="spc-name">Suit Jacket</h3>
+                            <div class="spc-bottom"><span class="spc-price">$160.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(113)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                    <div class="shop-product-card" data-id="114" data-category="Coats" data-price="130.00"
+                        data-subcategory="Standard"
+                        data-images="images/1 (1).jfif,images/1 (2).jfif,images/1 (3).jfif,images/1 (4).jfif"
+                        onclick="openModal(this, 114)">
+                        <div class="spc-image"><img src="images/1 (1).jfif" alt="Coats 6">
+                            <div class="spc-overlay"><button class="spc-quick-view">Quick View</button></div><span
+                                class="spc-badge">Standard</span>
+                        </div>
+                        <div class="spc-info"><span class="spc-category">Coats</span>
+                            <h3 class="spc-name">Standard Coat</h3>
+                            <div class="spc-bottom"><span class="spc-price">$130.00</span><button class="spc-cart-btn"
+                                    onclick="event.stopPropagation(); addToCart(114)"><i
+                                        class="fa fa-shopping-bag"></i></button></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Product Detail Modal -->
+    <div class="pdp-modal" id="pdp-modal">
+        <div class="pdp-modal-overlay" onclick="closeModal()"></div>
+        <div class="pdp-modal-content">
+            <button class="pdp-modal-close" onclick="closeModal()"><i class="fa fa-times"></i></button>
+            <div class="pdp-modal-body">
+                <div class="pdp-media-section">
+                    <div class="pdp-main-wrap"><img src="" alt="Product" class="pdp-main-img" id="pdp-main-img"></div>
+                    <div class="pdp-thumbs" id="pdp-thumbs"></div>
+                </div>
+                <div class="pdp-info-section">
+                    <div class="pdp-header"><span class="pdp-tag" id="pdp-modal-tag"></span>
+                        <h2 class="pdp-title" id="pdp-modal-title"></h2>
+                        <div class="pdp-price" id="pdp-modal-price"></div>
+                    </div>
+                    <div class="pdp-description">
+                        <h3>OVERVIEW</h3>
+                        <p id="pdp-modal-desc"></p>
+                    </div>
+                    <div class="pdp-options">
+                        <div class="option-group"><label>SELECT SIZE</label>
+                            <div class="size-grid"><button class="size-btn active">S</button><button
+                                    class="size-btn">M</button><button class="size-btn">L</button><button
+                                    class="size-btn">XL</button></div>
+                        </div>
+                        <div class="option-group"><label>QUANTITY</label>
+                            <div class="qty-control"><button onclick="changeQty(-1)"><i
+                                        class="fa fa-minus"></i></button><span id="qty-value">1</span><button
+                                    onclick="changeQty(1)"><i class="fa fa-plus"></i></button></div>
+                        </div>
+                    </div>
+                    <button class="pdp-action-btn" id="pdp-add-cart-btn"><i class="fa fa-shopping-bag"></i> ADD TO
+                        CART</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (Synced with Index) -->
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2 class="brand-logo" style="margin-bottom:0.5rem; color:white;">VEXZOR</h2>
+                <p>Wear Your Power.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a href="shop.html?cat=top">Top Wear</a>
+                <a href="shop.html?cat=bottom">Bottom Wear</a>
+                <a href="shop.html?cat=essentials">Essentials</a>
+                <a href="shop.html?cat=accessories">Accessories</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="index.html#about">About Us</a>
+                <a href="index.html#contact">Contact Us</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="footer-right">
+                <h4>Stay Updated</h4>
+                <div class="social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+                <div class="email-box">
+                    <input type="email" placeholder="Email Address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 VEXZOR Worldwide. All rights reserved.</div>
+    </div>
+
+    <!-- Global Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Go to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let currentView = 'grid';
+        let currentQty = 1;
+
+        function applyFilters() {
+            const checkedCats = [...document.querySelectorAll('.sidebar-options input:checked')].map(i => i.value).filter(v => v !== 'all');
+            const allChecked = document.querySelector('input[value="all"]').checked;
+            const maxPrice = parseInt(document.getElementById('price-range').value);
+            const sortSelection = document.getElementById('sort-select').value;
+            const cards = Array.from(document.querySelectorAll('.shop-product-card'));
+            let visibleCount = 0;
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const price = parseFloat(card.getAttribute('data-price'));
+                const catMatch = allChecked || checkedCats.length === 0 || checkedCats.includes(category);
+                const priceMatch = price <= maxPrice;
+                if (catMatch && priceMatch) {
+                    card.style.display = currentView === 'list' ? 'flex' : 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            document.getElementById('results-count').textContent = `Showing ${visibleCount} products`;
+            if (sortSelection !== 'default') sortDOM(cards, sortSelection);
+        }
+
+        function sortDOM(cards, mode) {
+            const container = document.getElementById('product-grid-shop');
+            const sorted = cards.sort((a, b) => {
+                const priceA = parseFloat(a.getAttribute('data-price'));
+                const priceB = parseFloat(b.getAttribute('data-price'));
+                const nameA = a.querySelector('.spc-name').textContent;
+                const nameB = b.querySelector('.spc-name').textContent;
+                if (mode === 'price-asc') return priceA - priceB;
+                if (mode === 'price-desc') return priceB - priceA;
+                if (mode === 'name-asc') return nameA.localeCompare(nameB);
+                return 0;
+            });
+            sorted.forEach(el => container.appendChild(el));
+        }
+
+        function resetFilters() {
+            document.querySelector('input[value="all"]').checked = true;
+            document.querySelectorAll('.sidebar-options input:not([value="all"])').forEach(i => i.checked = false);
+            document.getElementById('price-range').value = 500;
+            document.getElementById('price-label').textContent = '$500';
+            document.getElementById('sort-select').value = 'default';
+            applyFilters();
+        }
+
+        function updatePriceLabel(val) { document.getElementById('price-label').textContent = `$${val}`; }
+
+        function setView(mode) {
+            currentView = mode;
+            document.getElementById('grid-view-btn').classList.toggle('active', mode === 'grid');
+            document.getElementById('list-view-btn').classList.toggle('active', mode === 'list');
+            const grid = document.getElementById('product-grid-shop');
+            grid.classList.toggle('list-view', mode === 'list');
+            document.querySelectorAll('.shop-product-card').forEach(card => {
+                if (card.style.display !== 'none') card.style.display = mode === 'list' ? 'flex' : 'block';
+            });
+        }
+
+        function openModal(cardEl, id) {
+            let p = products.find(x => x.id === id);
+            if (!p) p = {};
+            currentQty = 1;
+            document.getElementById('qty-value').textContent = 1;
+
+            // Handle both dynamic and hardcoded card structures
+            const name = cardEl.querySelector ? cardEl.querySelector('.spc-name')?.textContent || cardEl.querySelector('.product-name')?.textContent : p.name;
+            const price = cardEl.querySelector ? cardEl.querySelector('.spc-price')?.textContent || cardEl.querySelector('.product-price')?.textContent : `$${p.price.toFixed(2)}`;
+            const subcat = (cardEl.getAttribute ? cardEl.getAttribute('data-subcategory') : null) || p.subcategory || 'Style';
+            const mainImg = cardEl.querySelector ? cardEl.querySelector('img').src : p.image;
+            const desc = p.desc || "Experience premium comfort and style with this VEXZOR original piece. Designed for the modern era with high-quality materials.";
+
+            const imagesStr = cardEl.getAttribute ? cardEl.getAttribute('data-images') : null;
+            const thumbImages = imagesStr ? imagesStr.split(',') : (p.images || [mainImg, mainImg, mainImg, mainImg]);
+
+            document.getElementById('pdp-modal-tag').textContent = subcat;
+            document.getElementById('pdp-modal-title').textContent = name || p.name;
+            document.getElementById('pdp-modal-price').textContent = price;
+            document.getElementById('pdp-modal-desc').textContent = desc;
+            document.getElementById('pdp-main-img').src = mainImg;
+            document.getElementById('pdp-thumbs').innerHTML = thumbImages.map((img, i) => `<div class="thumb-box"><img src="${img.trim()}" alt="Angle ${i + 1}" class="${i === 0 ? 'active' : ''}" onclick="switchThumb(this, '${img.trim()}')"></div>`).join('');
+
+            // Reset size buttons
+            document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.size-btn')?.classList.add('active'); // Default to S
+
+            document.getElementById('pdp-add-cart-btn').onclick = () => { addToCart(id); closeModal(); };
+            document.getElementById('pdp-modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() { document.getElementById('pdp-modal').classList.remove('open'); document.body.style.overflow = ''; }
+        function switchThumb(el, src) { document.querySelectorAll('#pdp-thumbs img').forEach(i => i.classList.remove('active')); el.classList.add('active'); document.getElementById('pdp-main-img').src = src; }
+        function changeQty(delta) { currentQty = Math.max(1, currentQty + delta); document.getElementById('qty-value').textContent = currentQty; }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Handle URL parameters for category filtering
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('cat');
+            if (catParam) {
+                const catMap = {
+                    'top': 'Shirts',
+                    'bottom': 'Pants',
+                    'Shoes': 'Shoes',
+                    'Caps': 'Caps',
+                    'Glasses': 'Glasses',
+                    'Coats': 'Coats'
+                };
+                const targetCat = catMap[catParam] || catParam;
+                const allCheckbox = document.querySelector('input[value="all"]');
+                const targetCheckbox = document.querySelector(`.sidebar-options input[value="${targetCat}"]`);
+                
+                if (targetCheckbox) {
+                    if (allCheckbox) allCheckbox.checked = false;
+                    targetCheckbox.checked = true;
+                }
+            }
+
+            applyFilters();
+
+            // Handle size button selection
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('size-btn')) {
+                    const buttons = e.target.parentElement.querySelectorAll('.size-btn');
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                }
+            });
+
+            // Hero Image Rotation Logic
+            const heroTrigger = document.getElementById('hero-img-trigger');
+            const heroImg = document.getElementById('hero-img');
+            if (heroTrigger && heroImg) {
+                heroTrigger.addEventListener('click', () => {
+                    heroImg.classList.toggle('more-rotate');
+                });
+            }
+
+            // Scroll to Top Logic
+            const scrollBtn = document.getElementById('scrollToTop');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) scrollBtn.classList.add('show');
+                else scrollBtn.classList.remove('show');
+            });
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+
+</html>
+

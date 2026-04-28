@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | VEXZOR</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .cart-wrapper {
+            max-width: 900px;
+            margin: 5rem auto 3rem;
+            padding: 0 5%;
+            min-height: 55vh;
+            font-family: 'Outfit', sans-serif;
+        }
+        .cart-title {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+            color: var(--text-color, #111);
+        }
+        .cart-empty {
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        .cart-empty i {
+            font-size: 4rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        .cart-empty p {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+        .cart-empty a {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #111;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .cart-empty a:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        /* Cart Item Card */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 1.2rem;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 14px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .cart-item:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .cart-item-img {
+            width: 90px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #f5f5f5;
+            flex-shrink: 0;
+        }
+        .cart-item-details {
+            flex: 1;
+            min-width: 0;
+        }
+        .cart-item-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #999;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .cart-item-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .cart-item-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+        }
+        .cart-item-price span {
+            font-size: 0.8rem;
+            color: #999;
+            font-weight: 400;
+            margin-left: 4px;
+        }
+
+        /* Quantity Controls */
+        .cart-qty-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 1rem;
+        }
+        .cart-qty-control button {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #333;
+            transition: all 0.2s ease;
+        }
+        .cart-qty-control button:hover {
+            background: #111;
+            color: #fff;
+            border-color: #111;
+        }
+        .cart-qty-control .qty-num {
+            font-weight: 600;
+            font-size: 1rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        /* Remove Button */
+        .btn-remove {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 1.1rem;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .btn-remove:hover {
+            color: #e53e3e;
+            background: #fff5f5;
+        }
+
+        /* Cart Footer / Summary */
+        .cart-summary {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 14px;
+            border: 1px solid #eee;
+        }
+        .cart-summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .cart-summary-row.total {
+            border-top: 2px solid #111;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #111;
+        }
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-top: 1.5rem;
+            background: #111;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', sans-serif;
+        }
+        .checkout-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        .continue-shopping {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #888;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+        .continue-shopping:hover {
+            color: #111;
+        }
+
+        @media (max-width: 600px) {
+            .cart-item {
+                padding: 0.8rem;
+                gap: 0.8rem;
+            }
+            .cart-item-img {
+                width: 70px;
+                height: 85px;
+            }
+            .cart-qty-control {
+                margin-right: 0.5rem;
+            }
+            .cart-qty-control button {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand-logo">VEXZOR</a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <a href="login.html" class="auth-link"><i class="fa fa-user"></i> <span class="hide-mobile">LOGIN</span></a>
+            <a href="cart.html" class="cart-icon-wrapper">
+                <i class="fa fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <div class="menu-btn" id="menu-btn">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="cart-wrapper">
+        <h2 class="cart-title">YOUR CART</h2>
+        <div id="cart-items"></div>
+        <div id="cart-footer" style="display:none;">
+            <div class="cart-summary">
+                <div class="cart-summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="cart-summary-row">
+                    <span>Shipping</span>
+                    <span>FREE</span>
+                </div>
+                <div class="cart-summary-row total">
+                    <span>TOTAL</span>
+                    <span id="cart-total-price">$0.00</span>
+                </div>
+            </div>
+            <a href="checkout.html" class="checkout-btn">PROCEED TO CHECKOUT</a>
+            <a href="shop.html" class="continue-shopping">← Continue Shopping</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2 class="brand-logo" style="margin-bottom:0.5rem; color:white;">VEXZOR</h2>
+                <p>Wear Your Power.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a href="shop.html?cat=top">Top Wear</a>
+                <a href="shop.html?cat=bottom">Bottom Wear</a>
+                <a href="shop.html?cat=essentials">Essentials</a>
+                <a href="shop.html?cat=accessories">Accessories</a>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="index.html#about">About Us</a>
+                <a href="index.html#contact">Contact Us</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="footer-right">
+                <h4>Stay Updated</h4>
+                <div class="social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+                <div class="email-box">
+                    <input type="email" placeholder="Email Address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 VEXZOR Worldwide. All rights reserved.</div>
+    </div>
+
+    <!-- Global Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Go to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const footer = document.getElementById('cart-footer');
+            const totalPriceEl = document.getElementById('cart-total-price');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fa fa-shopping-bag"></i>
+                        <p>Your cart is empty</p>
+                        <a href="shop.html">EXPLORE COLLECTIONS</a>
+                    </div>
+                `;
+                footer.style.display = 'none';
+                return;
+            }
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                const qty = item.quantity || 1;
+                const itemTotal = item.price * qty;
+                total += itemTotal;
+
+                // Make sure image path works - handle both relative and absolute paths
+                let imgSrc = item.image || '';
+                // If the image is empty or broken, use a placeholder
+                if (!imgSrc) {
+                    imgSrc = 'https://via.placeholder.com/90x110?text=VEXZOR';
+                }
+
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${imgSrc}" alt="${item.name}" class="cart-item-img" onerror="this.src='https://via.placeholder.com/90x110?text=VEXZOR'">
+                        <div class="cart-item-details">
+                            <div class="cart-item-category">${item.category || item.subcategory || 'VEXZOR'}</div>
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)} <span>× ${qty}</span></div>
+                        </div>
+                        <div class="cart-qty-control">
+                            <button onclick="changeCartQty(${index}, -1)"><i class="fa fa-minus"></i></button>
+                            <span class="qty-num">${qty}</span>
+                            <button onclick="changeCartQty(${index}, 1)"><i class="fa fa-plus"></i></button>
+                        </div>
+                        <button class="btn-remove" onclick="removeItem(${index})" title="Remove"><i class="fa fa-trash"></i></button>
+                    </div>
+                `;
+            });
+
+            subtotalEl.innerText = '$' + total.toFixed(2);
+            totalPriceEl.innerText = '$' + total.toFixed(2);
+            footer.style.display = 'block';
+        }
+
+        function changeCartQty(index, delta) {
+            const newQty = (cart[index].quantity || 1) + delta;
+            if (newQty < 1) {
+                removeItem(index);
+                return;
+            }
+            cart[index].quantity = newQty;
+            localStorage.setItem('vexzor_cart', JSON.stringify(cart));
+            updateCartUI();
+            renderCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('vexzor_cart', JSON.stringify(cart));
+            updateCartUI();
+            renderCart();
+        }
+
+        document.addEventListener("DOMContentLoaded", renderCart);
+    </script>
+</body>
+</html>

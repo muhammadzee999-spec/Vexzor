@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEXZOR | Wear Your Power</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="promo-banner">🔥 LIMITED STOCK AVAILABLE - UP TO 30% OFF THIS WEEKEND 🔥</div>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand-logo">VEXZOR</a>
+        </div>
+        <div class="nav-center">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <div class="nav-right">
+            <a href="login.html" class="auth-link"><i class="fa fa-user"></i> <span class="hide-mobile">LOGIN</span></a>
+            <a href="cart.html" class="cart-icon-wrapper">
+                <i class="fa fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <div class="menu-btn" id="menu-btn">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="videos/Hero-section video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">WEAR YOUR POWER</h1>
+            <div class="hero-cta-wrapper">
+                <a href="shop.html" class="btn btn-primary">EXPLORE THE DROP</a>
+            </div>
+        </div>
+    </header>
+
+
+    <section>
+        <h2 class="section-title">SHOP BY CATEGORY</h2>
+        <div class="categories-grid">
+            <a href="shop.html?cat=top" class="category-card">
+                <img src="images/classical-shirt-1 (1).jpeg"
+                    alt="Top Wear">
+                <h3>TOP WEAR</h3>
+            </a>
+            <a href="shop.html?cat=bottom" class="category-card">
+                <img src="images/baggy-1 (4).jpg"
+                    alt="Bottom Wear">
+                <h3>BOTTOM WEAR</h3>
+            </a>
+            <a href="shop.html?cat=Shoes" class="category-card">
+                <img src="images/shoes-1 (1).jpeg"
+                    alt="Footwear">
+                <h3>FOOTWEAR</h3>
+            </a>
+            <a href="shop.html?cat=Caps" class="category-card">
+                <img src="images/black-cap-1 (1).png"
+                    alt="Headwear">
+                <h3>HEADWEAR</h3>
+            </a>
+            <a href="shop.html?cat=Glasses" class="category-card">
+                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80"
+                    alt="Eyewear">
+                <h3>EYEWEAR</h3>
+            </a>
+            <a href="shop.html?cat=Coats" class="category-card">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80"
+                    alt="Coats">
+                <h3>COATS</h3>
+            </a>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 class="section-title" style="margin-top:0;">ELITE FEEDBACK</h2>
+        <div class="review-slider-container">
+            <div class="slider-track" id="review-slider">
+                <div class="review-card active">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Ali K." class="client-avatar">
+                    <div class="testi-text">"Amazing quality! The drop shoulder tee fits perfectly and the material is premium."</div>
+                    <div class="testi-author">- Ali K.</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=200" alt="Sarah J." class="client-avatar">
+                    <div class="testi-text">"Vexzor's cargo pants are my new favorite. Extremely comfortable and the fit is modern."</div>
+                    <div class="testi-author">- Sarah J.</div>
+                </div>
+                <div class="review-card">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200" alt="Taha S." class="client-avatar">
+                    <div class="testi-text">"The Attention to detail in the stitching is insane. Definitely my go-to for essentials."</div>
+                    <div class="testi-author">- Taha S.</div>
+                </div>
+            </div>
+            
+            <button class="slider-arrow prev" onclick="moveSlider(-1)"><i class="fa fa-chevron-left"></i></button>
+            <button class="slider-arrow next" onclick="moveSlider(1)"><i class="fa fa-chevron-right"></i></button>
+            
+            <div class="slider-dots" id="slider-dots">
+                <span class="dot active" onclick="jumpToSlide(0)"></span>
+                <span class="dot" onclick="jumpToSlide(1)"></span>
+                <span class="dot" onclick="jumpToSlide(2)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-split-section slide-hide">
+        <div class="about-image">
+            <img src="images/about_us.png" alt="Vexzor Premium Fashion">
+        </div>
+        <div class="about-content">
+            <h2 class="section-title" style="text-align: left; margin-top: 0;">ABOUT VEXZOR</h2>
+            <p>Vexzor is more than just a clothing brand. We are a lifestyle, a statement, and a movement. Founded in
+                2026, our mission is to empower individuals to express their true selves through high-quality, premium
+                streetwear.</p>
+            <p>Every piece is meticulously crafted using the finest materials, ensuring not only unmatched style but
+                also supreme comfort. We believe in breaking boundaries and setting new standards in fashion for the
+                modern era.</p>
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;">OUR VISION</h3>
+            <p>To become the leading name in premium urban wear globally, recognized for our commitment to quality,
+                design, and our community of trendsetters.</p>
+            <p style="font-weight: bold; color: var(--accent-color); margin-top: 2rem;">Wear Your Power.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-split-section slide-hide">
+        <div class="contact-content">
+            <h2 class="section-title" style="text-align: left; margin-top: 0;">HIT US UP</h2>
+            <form>
+                <div class="form-group">
+                    <label style="display:block; margin-bottom: 5px; font-weight: bold;">Full Name</label>
+                    <input type="text" class="form-control" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label style="display:block; margin-bottom: 5px; font-weight: bold;">Email Address</label>
+                    <input type="email" class="form-control" required placeholder="Enter your email address">
+                </div>
+                <div class="form-group">
+                    <label style="display:block; margin-bottom: 5px; font-weight: bold;">Message</label>
+                    <textarea class="form-control" rows="5" required placeholder="How can we help you?"></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark" style="width: 100%;">SEND MESSAGE</button>
+            </form>
+        </div>
+        <div class="contact-image">
+            <img src="images/contact_us.png" alt="Vexzor Showroom">
+        </div>
+    </section>
+
+    </div>
+    
+    <!-- PDP Modal (Quick View) -->
+    <div id="pdp-modal" class="pdp-modal">
+        <div class="pdp-modal-content">
+            <button class="pdp-close" onclick="closeModal()">&times;</button>
+            <div class="pdp-body">
+                <div class="pdp-left">
+                    <div class="pdp-main-image-container">
+                        <img id="pdp-main-img" src="" alt="Main Product">
+                    </div>
+                    <div class="pdp-thumbnails" id="pdp-thumbs">
+                        <!-- Thumbs rendered via JS -->
+                    </div>
+                </div>
+                <div class="pdp-right">
+                    <div class="pdp-header">
+                        <span class="pdp-tag" id="pdp-modal-tag"></span>
+                        <h2 class="pdp-title" id="pdp-modal-title"></h2>
+                        <div class="pdp-price" id="pdp-modal-price"></div>
+                    </div>
+                    <div class="pdp-description">
+                        <h3>OVERVIEW</h3>
+                        <p id="pdp-modal-desc"></p>
+                    </div>
+                    <div class="pdp-options">
+                        <div class="option-group">
+                            <label>SELECT SIZE</label>
+                            <div class="size-grid">
+                                <button class="size-btn active">S</button>
+                                <button class="size-btn">M</button>
+                                <button class="size-btn">L</button>
+                                <button class="size-btn">XL</button>
+                            </div>
+                        </div>
+                        <div class="option-group">
+                            <label>QUANTITY</label>
+                            <div class="qty-control">
+                                <button onclick="changeQty(-1)"><i class="fa fa-minus"></i></button>
+                                <span id="qty-value">1</span>
+                                <button onclick="changeQty(1)"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="pdp-action-btn" id="pdp-add-cart-btn"><i class="fa fa-shopping-bag"></i> ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-container">
+            <!-- Logo -->
+            <div class="footer-logo">
+                <h2 class="brand-logo" style="margin-bottom:0.5rem; color:white;">VEXZOR</h2>
+                <p>Wear Your Power.</p>
+            </div>
+
+            <!-- Column 1 -->
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a href="shop.html?cat=top">Top Wear</a>
+                <a href="shop.html?cat=bottom">Bottom Wear</a>
+                <a href="shop.html?cat=essentials">Essentials</a>
+                <a href="shop.html?cat=accessories">Accessories</a>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="index.html#about">About Us</a>
+                <a href="index.html#contact">Contact Us</a>
+                <a href="#">Support</a>
+            </div>
+
+            <!-- Right -->
+            <div class="footer-right">
+                <h4>Stay Updated</h4>
+
+                <div class="social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+
+                <div class="email-box">
+                    <input type="email" placeholder="Email Address">
+                    <button>Subscribe</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 VEXZOR Worldwide. All rights reserved.
+        </div>
+    </div>
+
+    <!-- Global Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" title="Go to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script type="module" src="js/auth.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let currentQty = 1;
+
+        function openModal(id) {
+            let p = products.find(x => x.id === id);
+            if (!p) return;
+            currentQty = 1;
+            document.getElementById('qty-value').textContent = 1;
+            
+            document.getElementById('pdp-modal-tag').textContent = p.subcategory;
+            document.getElementById('pdp-modal-title').textContent = p.name;
+            document.getElementById('pdp-modal-price').textContent = `$${p.price.toFixed(2)}`;
+            document.getElementById('pdp-modal-desc').textContent = p.desc;
+            document.getElementById('pdp-main-img').src = p.image;
+            document.getElementById('pdp-thumbs').innerHTML = p.images.map((img, i) => `<div class="thumb-box"><img src="${img.trim()}" alt="Angle ${i + 1}" class="${i === 0 ? 'active' : ''}" onclick="switchThumb(this, '${img.trim()}')"></div>`).join('');
+            
+            // Reset size buttons
+            document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.size-btn')?.classList.add('active');
+
+            document.getElementById('pdp-add-cart-btn').onclick = () => { addToCart(id); closeModal(); };
+            document.getElementById('pdp-modal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() { document.getElementById('pdp-modal').classList.remove('open'); document.body.style.overflow = ''; }
+        function switchThumb(el, src) { document.querySelectorAll('#pdp-thumbs img').forEach(i => i.classList.remove('active')); el.classList.add('active'); document.getElementById('pdp-main-img').src = src; }
+        function changeQty(delta) { currentQty = Math.max(1, currentQty + delta); document.getElementById('qty-value').textContent = currentQty; }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Handle size button selection
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains('size-btn')) {
+                    const buttons = e.target.parentElement.querySelectorAll('.size-btn');
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                }
+            });
+
+            // Slide Animation Observer
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("slide-show");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.slide-hide').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Review Slider Logic
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.review-card');
+            const dots = document.querySelectorAll('.dot');
+            const totalSlides = slides.length;
+            let slideInterval = setInterval(() => moveSlider(1), 30000); // 30 seconds
+
+            window.moveSlider = function(direction) {
+                currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+                updateSlider();
+                resetTimer();
+            };
+
+            window.jumpToSlide = function(index) {
+                currentSlide = index;
+                updateSlider();
+                resetTimer();
+            };
+
+            function updateSlider() {
+                slides.forEach((slide, idx) => {
+                    slide.classList.toggle('active', idx === currentSlide);
+                });
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentSlide);
+                });
+            }
+
+            function resetTimer() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(() => moveSlider(1), 30000);
+            }
+
+            // Automatic Scroll Down on Load
+            setTimeout(() => {
+                const firstSection = document.querySelector('section');
+                if (firstSection) {
+                    firstSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 800);
+        });
+
+    </script>
+</body>
+
+</html>
