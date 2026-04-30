@@ -19,6 +19,12 @@
     </script>
     <style>
         .checkout-container { max-width: 600px; margin: 4rem auto; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+        .order-summary { background: #f9f9f9; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border: 1px dashed #ddd; }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .summary-total { border-top: 1px solid #eee; margin-top: 1rem; padding-top: 1rem; font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; }
+        .btn-loading { background: #555 !important; cursor: not-allowed; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-loading i { animation: spin 1s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -47,7 +53,18 @@
     </nav>
 
     <div class="checkout-container">
-        <h2 style="margin-bottom: 2rem;">SECURE CHECKOUT</h2>
+        <h2 style="margin-bottom: 1rem;">SECURE CHECKOUT</h2>
+        
+        <div class="order-summary" id="order-summary">
+            <h4 style="margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem;">Order Summary</h4>
+            <div id="summary-items">
+                <!-- Items will be injected here -->
+            </div>
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="summary-total-amount">$0.00</span>
+            </div>
+        </div>
         <form id="checkout-form">
             <div class="form-group">
                 <label>Full Name</label>
@@ -67,7 +84,7 @@
                 <p style="font-size: 0.9rem; color: var(--text-light);">CASH ON DELIVERY (COD)</p>
             </div>
 
-            <button type="submit" class="btn btn-dark" style="width: 100%;">CONFIRM ORDER</button>
+            <button type="submit" id="confirm-btn" class="btn btn-dark" style="width: 100%;">CONFIRM ORDER</button>
         </form>
     </div>
 
