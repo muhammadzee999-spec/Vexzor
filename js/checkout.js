@@ -31,7 +31,7 @@ function processCheckout(event) {
     // If EmailJS is initialized on the window
     if(window.emailjs) {
         // NOTE: Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with actual EmailJS keys!
-        emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        emailjs.send("service_s8hndrl","template_wkn6teg",templateParams)   
             .then(function(response) {
                 alert("your order has been done");
                 localStorage.removeItem('vexzor_cart'); // Clear cart

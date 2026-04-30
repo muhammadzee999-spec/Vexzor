@@ -37,7 +37,8 @@
     </nav>
 
     <header class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
+        <img class="hero-placeholder" src="images/shop_hero.png" alt="VEXZOR Hero Loading">
+        <video class="hero-video" autoplay muted loop playsinline poster="images/shop_hero.png">
             <source src="videos/Hero-section video.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -361,6 +362,27 @@
                     firstSection.scrollIntoView({ behavior: 'smooth' });
                 }
             }, 800);
+
+            // Hero Video Placeholder Logic
+            const heroVideo = document.querySelector('.hero-video');
+            const heroPlaceholder = document.querySelector('.hero-placeholder');
+            
+            if (heroVideo && heroPlaceholder) {
+                heroVideo.addEventListener('playing', () => {
+                    heroPlaceholder.style.opacity = '0';
+                    setTimeout(() => {
+                        heroPlaceholder.style.display = 'none';
+                    }, 1000);
+                });
+                
+                // Fallback: If video is already playing or cached
+                if (heroVideo.readyState >= 3) {
+                    heroPlaceholder.style.opacity = '0';
+                    setTimeout(() => {
+                        heroPlaceholder.style.display = 'none';
+                    }, 1000);
+                }
+            }
         });
 
     </script>
